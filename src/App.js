@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import { v4 as randomId } from 'uuid';
+import foods from './foods.json';
+import React, { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [food, setFood] = useState(foods);
+
+  const foodList = food.map((eachFood) => {
+    let imageUrl = eachFood.image;
+    return (
+      <div key={randomId()}>
+        <p> {eachFood.name} </p>
+        <img src={imageUrl} alt={eachFood.name} width={100} />
+      </div>
+    );
+  });
+
+  return <div className="App">{foodList}</div>;
 }
 
 export default App;
