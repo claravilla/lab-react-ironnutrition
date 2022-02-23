@@ -26,14 +26,27 @@ function App() {
     setFood(searchResults);
   };
 
+  const handleDeleteBtn = (i) => {
+    let deletedFood = [...food];
+    deletedFood.splice(i, 1);
+    setFood(deletedFood);
+  };
+
   return (
     <div className="App">
       <h1>Food List</h1>
       <Search handleSearch={searchFood} />
       <AddFoodForm handleAddButton={addNewFood} />
       <div className="main-container">
-        {food.map((eachFood) => {
-          return <FoodBox food={eachFood} key={randomId()} />;
+        {food.map((eachFood, index) => {
+          return (
+            <FoodBox
+              food={eachFood}
+              key={index}
+              uniqueId={index}
+              deleteBtn={handleDeleteBtn}
+            />
+          );
         })}
       </div>
     </div>

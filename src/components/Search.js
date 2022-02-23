@@ -6,8 +6,8 @@ function Search(props) {
 
   const handleSearchInput = (event) => {
     event.preventDefault();
-    // console.log(event.target.value);
-    // setSearchInput(event.target.value);  ---> this seems to be always an input behing.. so when I type P is set to blank
+    console.log(event.target.value);
+    setSearchInput(event.target.value); //---> this seems to be always an input behing.. so when I type P is set to blank
     // console.log(searchInput);
     props.handleSearch(event.target.value.toLowerCase());
   };

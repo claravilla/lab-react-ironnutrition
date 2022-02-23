@@ -2,6 +2,10 @@ import { v4 as randomId } from 'uuid';
 import { Card, Col, Button } from 'antd';
 
 function FoodBox(props) {
+  const deleteFood = (uniqueId) => {
+    props.deleteBtn(uniqueId);
+  };
+
   return (
     <Col>
       <Card
@@ -15,7 +19,15 @@ function FoodBox(props) {
           <b>Total Calories: {props.food.calories * props.food.servings} </b>{' '}
           kcal
         </p>
-        <Button type="primary"> Delete </Button>
+        <Button
+          type="primary"
+          onClick={() => {
+            deleteFood(props.uniqueId);
+          }}
+        >
+          {' '}
+          Delete{' '}
+        </Button>
       </Card>
     </Col>
   );
